@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Application</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin-top: 100px;
+            background-color: #f2f2f2;
+        }
+
+        #jobLink {
+            font-size: 22px;
+            text-decoration: none;
+            color: white;
+            background: green;
+            padding: 15px 25px;
+            border-radius: 8px;
+        }
+
+        #playerSection {
+            display: none;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Welcome to Job Portal</h2>
+
+    <a href="#" id="jobLink">Click here to get a job</a>
+
+    <div id="playerSection">
+        <h3>Congratulations </h3>
+        <audio id="audioPlayer" controls>
+            <source src="song.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <script>
+        document.getElementById("jobLink").addEventListener("click", function(event) {
+            event.preventDefault();
+
+            this.style.display = "none";
+            document.getElementById("playerSection").style.display = "block";
+
+            var audio = document.getElementById("audioPlayer");
+            audio.play();
+        });
+    </script>
+
+</body>
+</html>
