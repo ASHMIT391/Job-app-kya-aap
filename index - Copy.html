@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Job Application</title>
+    <title>Job Portal</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <style>
         body {
             text-align: center;
@@ -24,8 +25,27 @@
             display: none;
             margin-top: 30px;
         }
+
+        /* Overlay to block clicks */
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.4);
+            display: none;
+            z-index: 9999;
+        }
+
+        #message {
+            color: white;
+            font-size: 20px;
+            margin-top: 40vh;
+        }
     </style>
 </head>
+
 <body>
 
     <h2>Welcome to Job Portal</h2>
@@ -33,21 +53,36 @@
     <a href="#" id="jobLink">Click here to get a job</a>
 
     <div id="playerSection">
-        <h3>Congratulations </h3>
-        <audio id="audioPlayer" controls>
+        <h3>Fhaaaaaaaaa!!!!!</h3>
+        <audio id="audioPlayer">
             <source src="song.mp3" type="audio/mpeg">
         </audio>
     </div>
 
+    <!-- Click blocking overlay -->
+    <div id="overlay">
+        <div id="message">Please wait... Audio is playing</div>
+    </div>
+
     <script>
-        document.getElementById("jobLink").addEventListener("click", function(event) {
+        var jobLink = document.getElementById("jobLink");
+        var playerSection = document.getElementById("playerSection");
+        var audio = document.getElementById("audioPlayer");
+        var overlay = document.getElementById("overlay");
+
+        jobLink.addEventListener("click", function(event) {
             event.preventDefault();
 
-            this.style.display = "none";
-            document.getElementById("playerSection").style.display = "block";
+            jobLink.style.display = "none";
+            playerSection.style.display = "block";
 
-            var audio = document.getElementById("audioPlayer");
+            overlay.style.display = "block"; // block clicks
             audio.play();
+        });
+
+        // When audio finishes
+        audio.addEventListener("ended", function() {
+            overlay.style.display = "none"; // allow clicks again
         });
     </script>
 
