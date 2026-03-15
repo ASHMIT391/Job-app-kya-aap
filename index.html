@@ -1,90 +1,147 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Job Portal</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <style>
-        body {
-            text-align: center;
-            font-family: Arial, sans-serif;
-            margin-top: 100px;
-            background-color: #f2f2f2;
-        }
+<title>Job Portal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        #jobLink {
-            font-size: 22px;
-            text-decoration: none;
-            color: white;
-            background: green;
-            padding: 15px 25px;
-            border-radius: 8px;
-        }
+<style>
 
-        #playerSection {
-            display: none;
-            margin-top: 30px;
-        }
+body{
+    text-align:center;
+    font-family:Arial, sans-serif;
+    margin-top:100px;
+    background:#f2f2f2;
+}
 
-        /* Overlay to block clicks */
-        #overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.4);
-            display: none;
-            z-index: 9999;
-        }
+button{
+    font-size:20px;
+    padding:15px 25px;
+    margin:10px;
+    border:none;
+    border-radius:8px;
+    color:white;
+    cursor:pointer;
+}
 
-        #message {
-            color: white;
-            font-size: 20px;
-            margin-top: 40vh;
-        }
-    </style>
+#jobBtn{
+    background:green;
+}
+
+#richBtn{
+    background:#e74c3c;
+}
+
+#playerSection{
+    display:none;
+    margin-top:30px;
+}
+
+#qualification{
+    display:none;
+    margin-top:30px;
+    font-size:22px;
+}
+
+#overlay{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.5);
+    color:white;
+    display:none;
+    z-index:9999;
+}
+
+#overlayText{
+    margin-top:40vh;
+    font-size:24px;
+}
+
+</style>
 </head>
 
 <body>
 
-    <h2>Welcome to Job Portal</h2>
+<h2>Welcome to Job Portal</h2>
 
-    <a href="#" id="jobLink">Click here to get a job</a>
+<button id="jobBtn">Click here to get a job</button>
 
-    <div id="playerSection">
-        <h3>Fhaaaaaaaaa!!!!!</h3>
-        <audio id="audioPlayer">
-            <source src="song.mp3" type="audio/mpeg">
-        </audio>
-    </div>
+<button id="richBtn">₹1 Cr per month job</button>
 
-    <!-- Click blocking overlay -->
-    <div id="overlay">
-        <div id="message">Please wait... Audio is playing</div>
-    </div>
 
-    <script>
-        var jobLink = document.getElementById("jobLink");
-        var playerSection = document.getElementById("playerSection");
-        var audio = document.getElementById("audioPlayer");
-        var overlay = document.getElementById("overlay");
+<div id="playerSection">
+<h3>Congratulations 🎉</h3>
 
-        jobLink.addEventListener("click", function(event) {
-            event.preventDefault();
+<audio id="audio1">
+<source src="song.mp3" type="audio/mpeg">
+</audio>
 
-            jobLink.style.display = "none";
-            playerSection.style.display = "block";
+</div>
 
-            overlay.style.display = "block"; // block clicks
-            audio.play();
-        });
 
-        // When audio finishes
-        audio.addEventListener("ended", function() {
-            overlay.style.display = "none"; // allow clicks again
-        });
-    </script>
+<div id="qualification">
+
+<h3>Required Qualifications</h3>
+
+<p>BPSC</p>
+<p>IIT</p>
+<p>NEET</p>
+
+<audio id="audio2">
+<source src="fun.mp3" type="audio/mpeg">
+</audio>
+
+</div>
+
+
+<div id="overlay">
+<div id="overlayText">Please wait... audio is playing</div>
+</div>
+
+
+<script>
+
+let jobBtn = document.getElementById("jobBtn");
+let richBtn = document.getElementById("richBtn");
+
+let audio1 = document.getElementById("audio1");
+let audio2 = document.getElementById("audio2");
+
+let overlay = document.getElementById("overlay");
+
+jobBtn.onclick = function(){
+
+    document.getElementById("playerSection").style.display = "block";
+
+    overlay.style.display = "block";
+
+    audio1.play();
+}
+
+richBtn.onclick = function(){
+
+    document.getElementById("qualification").style.display = "block";
+
+    overlay.style.display = "block";
+
+    audio2.play();
+}
+
+audio1.onended = function(){
+
+    overlay.style.display = "none";
+
+}
+
+audio2.onended = function(){
+
+    overlay.style.display = "none";
+
+}
+
+</script>
 
 </body>
 </html>
