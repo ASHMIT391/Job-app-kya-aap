@@ -21,6 +21,13 @@ button{
     border-radius:8px;
     color:white;
     cursor:pointer;
+}
+
+#jobBtn{
+    background:green;
+}
+
+#richBtn{
     background:#e74c3c;
 }
 
@@ -54,35 +61,64 @@ button{
 
 <h2>Welcome to Job Portal</h2>
 
+<button id="jobBtn">Click here to get a job</button>
 <button id="richBtn">₹1 Cr per month job</button>
 
+
+<!-- Qualification section -->
 <div id="qualification">
+
 <h3>Required Qualifications</h3>
+
 <p>BPSC</p>
 <p>IIT</p>
 <p>NEET</p>
+
 </div>
+
+
+<audio id="audio1">
+<source src="song.mp3" type="audio/mpeg">
+</audio>
 
 <audio id="audio2">
 <source src="fun.mp3" type="audio/mpeg">
 </audio>
 
+
 <div id="overlay">
 <div id="overlayText">Please wait... audio is playing</div>
 </div>
 
+
 <script>
 
+let jobBtn = document.getElementById("jobBtn");
 let richBtn = document.getElementById("richBtn");
+
+let audio1 = document.getElementById("audio1");
 let audio2 = document.getElementById("audio2");
+
 let overlay = document.getElementById("overlay");
+
+jobBtn.onclick = function(){
+
+    overlay.style.display = "block";
+
+    audio1.play();
+}
 
 richBtn.onclick = function(){
 
     document.getElementById("qualification").style.display = "block";
+
     overlay.style.display = "block";
 
     audio2.play();
+}
+
+audio1.onended = function(){
+    overlay.style.display = "none";
 }
 
 audio2.onended = function(){
