@@ -31,11 +31,6 @@ button{
     background:#e74c3c;
 }
 
-#playerSection{
-    display:none;
-    margin-top:30px;
-}
-
 #qualification{
     display:none;
     margin-top:30px;
@@ -67,20 +62,10 @@ button{
 <h2>Welcome to Job Portal</h2>
 
 <button id="jobBtn">Click here to get a job</button>
-
 <button id="richBtn">₹1 Cr per month job</button>
 
 
-<div id="playerSection">
-<h3>Congratulations 🎉</h3>
-
-<audio id="audio1">
-<source src="song.mp3" type="audio/mpeg">
-</audio>
-
-</div>
-
-
+<!-- Qualification section -->
 <div id="qualification">
 
 <h3>Required Qualifications</h3>
@@ -89,11 +74,16 @@ button{
 <p>IIT</p>
 <p>NEET</p>
 
+</div>
+
+
+<audio id="audio1">
+<source src="song.mp3" type="audio/mpeg">
+</audio>
+
 <audio id="audio2">
 <source src="fun.mp3" type="audio/mpeg">
 </audio>
-
-</div>
 
 
 <div id="overlay">
@@ -113,8 +103,6 @@ let overlay = document.getElementById("overlay");
 
 jobBtn.onclick = function(){
 
-    document.getElementById("playerSection").style.display = "block";
-
     overlay.style.display = "block";
 
     audio1.play();
@@ -130,15 +118,11 @@ richBtn.onclick = function(){
 }
 
 audio1.onended = function(){
-
     overlay.style.display = "none";
-
 }
 
 audio2.onended = function(){
-
     overlay.style.display = "none";
-
 }
 
 </script>
