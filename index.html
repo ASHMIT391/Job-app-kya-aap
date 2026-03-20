@@ -1,34 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Job Portal</title>
+<title>Cool Job Website</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-
 body{
     text-align:center;
     font-family:Arial, sans-serif;
-    margin-top:100px;
-    background:#f2f2f2;
+    background:linear-gradient(to right,#141e30,#243b55);
+    color:white;
+    margin-top:80px;
+}
+
+h2{
+    font-size:32px;
 }
 
 button{
-    font-size:20px;
-    padding:15px 25px;
-    margin:10px;
+    font-size:18px;
+    padding:14px 22px;
+    margin:12px;
     border:none;
-    border-radius:8px;
-    color:white;
+    border-radius:10px;
     cursor:pointer;
+    color:white;
+    background:#ff4b2b;
+    transition:0.3s;
 }
 
-#jobBtn{
-    background:green;
-}
-
-#richBtn{
-    background:#e74c3c;
+button:hover{
+    background:#ff1c00;
+    transform:scale(1.05);
 }
 
 #qualification{
@@ -54,75 +57,102 @@ button{
     font-size:24px;
 }
 
+/* popup */
+#popup{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.6);
+    display:none;
+}
+
+#popupBox{
+    background:white;
+    color:black;
+    width:280px;
+    padding:20px;
+    border-radius:10px;
+    margin:200px auto;
+    text-align:center;
+}
+
+.popupBtn{
+    background:#333;
+    margin:5px;
+}
 </style>
 </head>
 
 <body>
 
-<h2>Welcome to Job Portal</h2>
+<h2>Welcome to Future Job Portal 😎</h2>
 
-<button id="jobBtn">Click here to get a job</button>
-<button id="richBtn">₹1 Cr per month job</button>
+<button onclick="playJob()">Click here to get a job</button>
+<button onclick="playRich()">₹1 Cr per month job</button>
 
+<br><br>
 
-<!-- Qualification section -->
+<button onclick="playAge()">When you become 23</button>
+<button onclick="playMillion()">When you say you become millioner</button>
+<button onclick="playModi()">Support Modi</button>
+<button onclick="playStudent()">Ek click me ladki pataye</button>
+
 <div id="qualification">
-
 <h3>Required Qualifications</h3>
-
 <p>BPSC</p>
 <p>IIT</p>
 <p>NEET</p>
-
 </div>
 
-
-<audio id="audio1">
-<source src="song.mp3" type="audio/mpeg">
-</audio>
-
-<audio id="audio2">
-<source src="fun.mp3" type="audio/mpeg">
-</audio>
-
+<!-- AUDIO FILES -->
+<audio id="a1" src="song.mp3"></audio>
+<audio id="a2" src="fun.mp3"></audio>
+<audio id="a3" src="age.mp3"></audio>
+<audio id="a4" src="million.mp3"></audio>
+<audio id="a5" src="modi.mp3"></audio>
+<audio id="a6" src="student.mp3"></audio>
 
 <div id="overlay">
 <div id="overlayText">Please wait... audio is playing</div>
 </div>
 
-
 <script>
 
-let jobBtn = document.getElementById("jobBtn");
-let richBtn = document.getElementById("richBtn");
+function playAudio(id){
+    let audio = document.getElementById(id);
+    document.getElementById("overlay").style.display="block";
+    audio.play();
 
-let audio1 = document.getElementById("audio1");
-let audio2 = document.getElementById("audio2");
-
-let overlay = document.getElementById("overlay");
-
-jobBtn.onclick = function(){
-
-    overlay.style.display = "block";
-
-    audio1.play();
+    audio.onended = function(){
+        document.getElementById("overlay").style.display="none";
+    }
 }
 
-richBtn.onclick = function(){
-
-    document.getElementById("qualification").style.display = "block";
-
-    overlay.style.display = "block";
-
-    audio2.play();
+function playJob(){
+    playAudio("a1");
 }
 
-audio1.onended = function(){
-    overlay.style.display = "none";
+function playRich(){
+    document.getElementById("qualification").style.display="block";
+    playAudio("a2");
 }
 
-audio2.onended = function(){
-    overlay.style.display = "none";
+function playAge(){
+    playAudio("a3");
+}
+
+function playMillion(){
+    playAudio("a4");
+}
+
+function playModi(){
+    playAudio("a5");
+}
+
+function playStudent(){
+    playAudio("a6");
 }
 
 </script>
